@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
-//#include "hardware/i2c.h"
+#include "hardware/i2c.h"
+#include "lib\ssd1306.h"
+#include "lib\font.h"
 
 #define LED_RED 13
 #define LED_BLUE 12
@@ -8,10 +10,26 @@
 #define BUTTON_A 5
 #define BUTTON_B 6
 #define BUZZER 10
+#define I2C i2c1
+#define SDA 14
+#define SCL 15
 
 int main()
 {
     stdio_init_all();
+
+    i2c_init(I2C, 400 * 1000);
+    gpio_set_function(SDA, GPIO_FUNC_I2C);
+    gpio_set_function(SCL, GPIO_FUNC_I2C);
+    gpio_pull_up(SDA);
+    gpio_pull_up(SCL);
+
+    ssd1306_t ssd;
+    ssd1306_init(&ssd, WIDTH, HEIGHT, false, 0x3C, I2C);
+    ssd1306_config(&ssd);
+    ssd1306_send_data(&ssd);
+    ssd1306_fill(&ssd, false);
+    ssd1306_send_data(&ssd);
 
     gpio_init(LED_RED);
     gpio_set_dir(LED_RED, GPIO_OUT);
@@ -33,32 +51,77 @@ int main()
     gpio_init(BUZZER);
     gpio_set_dir(BUZZER, GPIO_OUT);
 
-    void buzzer(){
+    void buzzer_RED(){
 
         gpio_put(BUZZER, true);
         sleep_ms(1000); 
         gpio_put(BUZZER, false);
+        gpio_put(LED_RED, true);
+        sleep_ms(2500);
+        gpio_put(LED_RED,false);
+        
     };
+
+    void buzzer_GREEN(){
+
+      gpio_put(BUZZER, true);
+      sleep_ms(500); 
+      gpio_put(BUZZER, false);
+      gpio_put(LED_GREEN, true);
+      sleep_ms(1500);
+      gpio_put(LED_GREEN,false);
+      
+  };
+  void buzzer_BLUE(){
+
+    gpio_put(BUZZER, true);
+    sleep_ms(900); 
+    gpio_put(BUZZER, false);
+    gpio_put(LED_BLUE, true);
+    sleep_ms(2000);
+    gpio_put(LED_BLUE,false);
+    
+};
 
 
     while (true) {
 
-    
-    buzzer();
-    gpio_put(LED_RED, true);
-    sleep_ms(10000);
-    gpio_put(LED_RED,false);
-    
-    buzzer();
-    gpio_put(LED_GREEN, true);
-    sleep_ms(10000);
-    gpio_put(LED_GREEN,false);
+      ssd1306_fill(&ssd, false);
+      ssd1306_draw_string(&ssd, "TIME TO FOCUS", 20, 30);
+      ssd1306_send_data(&ssd);
+      buzzer_RED();
+      ssd1306_fill(&ssd, false);
+      
+      ssd1306_fill(&ssd, false);
+      ssd1306_draw_string(&ssd, "5 MIN. BREAK", 20, 30);
+      ssd1306_send_data(&ssd);
+      buzzer_GREEN();
+      ssd1306_fill(&ssd, false);
 
-    buzzer();
-    gpio_put(LED_BLUE, true);
-    sleep_ms(10000);
-    gpio_put(LED_BLUE,false);
- 
+      ssd1306_fill(&ssd, false);
+      ssd1306_draw_string(&ssd, "TIME TO FOCUS", 20, 30);
+      ssd1306_send_data(&ssd);
+      buzzer_RED();
+      ssd1306_fill(&ssd, false);
+
+      ssd1306_fill(&ssd, false);
+      ssd1306_draw_string(&ssd, "5 MIN. BREAK", 20, 30);
+      ssd1306_send_data(&ssd);
+      buzzer_GREEN();
+      ssd1306_fill(&ssd, false);
+
+      ssd1306_fill(&ssd, false);
+      ssd1306_draw_string(&ssd, "TIME TO FOCUS", 20, 30);
+      ssd1306_send_data(&ssd);
+      buzzer_RED();
+      ssd1306_fill(&ssd, false);
+
+      ssd1306_fill(&ssd, false);
+      ssd1306_draw_string(&ssd, "10 MIN BREAK", 20, 30);
+      ssd1306_send_data(&ssd);
+      buzzer_BLUE();
+      ssd1306_fill(&ssd, false);
+    
       sleep_ms(200);   
     }
 
