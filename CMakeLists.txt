@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(pomo_timer pomo_timer.c)
+add_executable(pomo_timer pomo_timer.c lib\ssd1306.c)
 
 pico_set_program_name(pomo_timer "pomo_timer")
 pico_set_program_version(pomo_timer "0.1")
