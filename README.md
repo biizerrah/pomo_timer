@@ -1,7 +1,7 @@
-# Pomo Timer
+## Pomo Timer  
+<img src="pomodoro-pic.png" alt="pomodoro" width="400">
 
-<img src="pomodoro-pic.png" alt="pomodoro" width="450">
-
+ 
 O Pomo Timer consiste no método pomodoro projetado para sistemas embarcados. O método pomodoro é amplamente conhecido e utilizado para melhorar a concentração e o foco nos estudos. No entanto, ele geralmente está disponível apenas em formato de software, vinculado a um smartphone ou a uma página web.
 
 Essa vinculação ao mundo digital pode nos distrair facilmente. Pensando nisso, o Pomo Timer foi desenvolvido para reduzir o contato com a internet e suas distrações, oferecendo uma solução mais eficiente para manter o foco.
@@ -15,7 +15,9 @@ O Pomo Timer segue o ciclo de intervalos sugeridos pelo criador do método Franc
  - 25 minutos para a realização das atividades;
  - 10 minutos para uma pausa longa;
 
- ## Como utilizar o Pomo Timer
+**OBS:** Para esse projeto o tempo dos intervalos foram reduzidos.
+
+ ### Como utilizar o Pomo Timer
 
 **HARDWARE** 
 

@@ -13,6 +13,18 @@
 #define SDA 14
 #define SCL 15
 
+bool DEBOUNCING(){
+
+      if(!gpio_get(BUTTON_A)){
+
+            sleep_ms(50);
+            
+            if(!gpio_get(BUTTON_A)){
+                  return true;
+            } 
+      } return false;
+};
+
 int main()
 {
     stdio_init_all();
@@ -35,9 +47,9 @@ void focus(){
       ssd1306_fill(&ssd, false);
       ssd1306_draw_string(&ssd, "TIME TO FOCUS", 20, 30);
       ssd1306_send_data(&ssd);
-      gpio_put(LED_RED, true);
+      gpio_put(LED_BLUE, true);
       sleep_ms(25000);
-      gpio_put(LED_RED,false);
+      gpio_put(LED_BLUE,false);
       gpio_put(BUZZER, true);
       sleep_ms(1000); 
       gpio_put(BUZZER, false);
@@ -63,9 +75,9 @@ void long_break(){
       ssd1306_draw_string(&ssd, "10 MIN BREAK", 20, 30);
       ssd1306_draw_string(&ssd, "     II", 15, 48);
       ssd1306_send_data(&ssd);
-      gpio_put(LED_BLUE, true);
+      gpio_put(LED_RED, true);
       sleep_ms(10000);
-      gpio_put(LED_BLUE,false);
+      gpio_put(LED_RED,false);
       gpio_put(BUZZER, true);
       sleep_ms(1000); 
       gpio_put(BUZZER, false);
@@ -95,7 +107,7 @@ void long_break(){
       ssd1306_draw_string(&ssd, "   START", 20, 30);
       ssd1306_send_data(&ssd);
 
-      if(!gpio_get(BUTTON_A)){
+      if(DEBOUNCING()){
 
         focus();
         short_break();
