@@ -25,6 +25,7 @@ O Pomo Timer segue o ciclo de intervalos sugeridos pelo criador do método Franc
   - Possui um display ssd1306 com essas dimensões 128 x 64;
   - 1 BUZZER;
   - 3 LEDS (verde, vermelho, azul) ou 1 LED (RGB);
+  - 1 Botão;
   - Ou caso possua, apenas o kit de desenvolvimento BitDogLab contém todo o hardware mencinado acima;
 
 **SOFTWARE**
@@ -39,4 +40,4 @@ O Pomo Timer segue o ciclo de intervalos sugeridos pelo criador do método Franc
 - Após o clone faça o build do projeto 
 - Conecte sua placa Raspberry pi pico ou o BitDogLab em modo BOOTSEL com o computador via USB
 - Compile o projeto na placa ou apenas copie e cole o arquivo de extensão UF2
-- Após esses passo, apenas siga as instruções que aparecem na tela 
+- Após esses passos, apenas siga as instruções que aparecem na tela 
