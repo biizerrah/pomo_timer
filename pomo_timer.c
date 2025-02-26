@@ -27,8 +27,6 @@ bool DEBOUNCING(){
 
 int main()
 {
-    stdio_init_all();
-
     i2c_init(I2C, 400 * 1000);
     gpio_set_function(SDA, GPIO_FUNC_I2C);
     gpio_set_function(SCL, GPIO_FUNC_I2C);

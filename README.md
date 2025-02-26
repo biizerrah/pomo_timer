@@ -1,6 +1,8 @@
 ## Pomo Timer  
 <img src="pomodoro-pic.png" alt="pomodoro" width="400">
 
+[Apresentação do Projeto](https://www.youtube.com/watch?v=8kn3MeNpoag)
+
  
 O Pomo Timer consiste no método pomodoro projetado para sistemas embarcados. O método pomodoro é amplamente conhecido e utilizado para melhorar a concentração e o foco nos estudos. No entanto, ele geralmente está disponível apenas em formato de software, vinculado a um smartphone ou a uma página web.
 
